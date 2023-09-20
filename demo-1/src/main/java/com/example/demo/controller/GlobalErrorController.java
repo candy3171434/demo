@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.enumFile.ResponseCode;
 import com.example.demo.result.BaseResult;
-import com.google.gson.Gson;
 
 @ControllerAdvice
 public class GlobalErrorController

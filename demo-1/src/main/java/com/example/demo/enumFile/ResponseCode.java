@@ -1,7 +1,5 @@
 package com.example.demo.enumFile;
 
-import org.apache.catalina.connector.Response;
-
 import lombok.Getter;
 
 @Getter
