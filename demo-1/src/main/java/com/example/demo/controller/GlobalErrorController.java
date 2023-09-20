@@ -18,6 +18,7 @@ public class GlobalErrorController
 	public ResponseEntity<BaseResult> handleException(RuntimeException e)
 	{
 		BaseResult result = new BaseResult(ResponseCode.INTERNAL_ERROR);
+		result.setData(e.getMessage());
 		System.out.println("錯誤訊息在這:"+e.getMessage());
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(result);
 	}

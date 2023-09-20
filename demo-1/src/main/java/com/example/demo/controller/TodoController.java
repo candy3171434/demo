@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.Optional;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,8 +24,10 @@ public class TodoController
 	@ApiResponses({ @ApiResponse(code = 401, message = "沒有權限"), @ApiResponse(code = 404, message = "找不到路徑") })
 	public ResponseEntity<String> test(@RequestParam("name") String name)
 	{
-		String res = "你的name is:" + name;
-		return ResponseEntity.ok(res);
+		String result = "你的name is:" + name;
+
+		Optional.ofNullable(result).orElseThrow(() -> new RuntimeException("Data not found for name: " + name));
+		return ResponseEntity.ok(result);
 	}
-	
+
 }

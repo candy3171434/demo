@@ -13,6 +13,7 @@ public class BaseResult
 {
 	private int code;
 	private String message;
+	private Object data;
 
 	public BaseResult(ResponseCode responseCode)
 	{

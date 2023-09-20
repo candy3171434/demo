@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum ResponseCode
 {
-	SUCCESS(2, "Success"),
+	SUCCESS(200, "Success"),
 
 	INTERNAL_ERROR(1, "伺服器內部錯誤"),
 
