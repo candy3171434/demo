@@ -31,6 +31,7 @@ public class TodoController {
 		String res="你的name is:"+name;
 		if(true)
 			throw new RuntimeException();
+		System.out.println("THIS IS ONE");
 		return ResponseEntity.ok(res);
 	}
 }
