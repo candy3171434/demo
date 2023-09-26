@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.aop;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,6 @@ import com.example.demo.result.BaseResult;
 @ControllerAdvice
 public class GlobalErrorController
 {
-
 	@ExceptionHandler(RuntimeException.class)
 	@ResponseBody
 	public ResponseEntity<BaseResult> handleException(RuntimeException e)
