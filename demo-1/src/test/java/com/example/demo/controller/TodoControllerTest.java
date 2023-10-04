@@ -28,6 +28,7 @@ class TodoControllerTest {
                 .param("name", name) // 提供参数
                 .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("你的name is:" + name));
+                .andExpect(MockMvcResultMatchers.content().string("这是一个错误的响应内容")); // 修改为错误的响应内容
+//                .andExpect(MockMvcResultMatchers.content().string("你的name is:" + name));
     }
 }
