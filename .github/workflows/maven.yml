@@ -20,7 +20,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file demo-1/pom.xml
-    # 添加一个新步骤来运行测试
-    - name: Run Tests
-      run: mvn test --file demo-1/pom.xml  # 根据您的项目配置运行测试命令
+      run: mvn -B package --file demo-1/pom.xml #打包包含測試
