@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS todo (
+    id INT PRIMARY KEY,
+    name VARCHAR(255)
+);
