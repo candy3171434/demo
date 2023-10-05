@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.models.Todo;
 
 @Service
-public class TodoServiceImpl implements todoService
+public class TodoServiceImpl implements TodoService
 {
 
 	@Override

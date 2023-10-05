@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.demo.models.Todo;
 
-public interface todoService
+public interface TodoService
 {
 	public Todo createTodo(Todo todo);
 
