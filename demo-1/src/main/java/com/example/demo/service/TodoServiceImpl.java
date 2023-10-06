@@ -1,49 +1,55 @@
 package com.example.demo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dao.StudentRepository;
+import com.example.demo.domain.Student;
 import com.example.demo.models.Todo;
 
 @Service
 public class TodoServiceImpl implements TodoService
 {
+	@Autowired
+	private StudentRepository studentRepository;
 
 	@Override
-	public Todo createTodo(Todo todo)
+	public Student createTodo(Todo todo)
 	{
-		Todo data=new Todo(todo.getId(), todo.getName());
-		return data;
+		Student data = new Student(todo.getId(), todo.getName());
+		return studentRepository.save(data);
 	}
 
 	@Override
-	public Todo updateTodo(int id, String name)
+	public Student updateTodo(int id, String name)
 	{
-		return new Todo(id, name);
+		Student data = new Student(id, name);
+		return studentRepository.save(data);
 	}
 
 	@Override
-	public Todo getById(int id)
+	public Student getById(int id)
 	{
-		return new Todo(0, "testName");
+		return studentRepository.findById(id).get();
 	}
 
 	@Override
-	public List<Todo> getAllTodos()
+	public List<Student> getAllTodos()
 	{
-		List<Todo> lists=new ArrayList<Todo>();
-		lists.add(new Todo(0, "testName0"));
-		lists.add(new Todo(1, "testName1"));
-		return lists;
+		return studentRepository.findAll();
 	}
 
 	@Override
 	public boolean deleteTodo(int id)
 	{
-		// TODO Auto-generated method stub
-		return true;
+		if (studentRepository.findById(id).isPresent())
+		{
+			studentRepository.deleteById(id); // 正確的刪除方法
+			return true;
+		}
+		return false;
 	}
 
 }

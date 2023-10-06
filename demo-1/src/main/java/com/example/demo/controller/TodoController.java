@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.domain.Student;
 import com.example.demo.models.Todo;
 import com.example.demo.service.TodoServiceImpl;
 
@@ -30,8 +31,7 @@ public class TodoController
 {
 	@Autowired
 	TodoServiceImpl todoServiceImpl;
-	
-	
+
 	@GetMapping(value = "/api", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ApiOperation(value = "取得所有代辦事項列表", httpMethod = "GET")
 	@ApiResponses({ @ApiResponse(code = 401, message = "沒有權限"), @ApiResponse(code = 404, message = "找不到路徑") })
@@ -44,57 +44,44 @@ public class TodoController
 	}
 
 	@GetMapping("/todos")
-	public ResponseEntity<List<Todo>> getAllTodos()
+	public ResponseEntity<List<Student>> getAllTodos()
 	{
-		List<Todo> todos = todoServiceImpl.getAllTodos();
+		List<Student> todos = todoServiceImpl.getAllTodos();
 		return ResponseEntity.ok(todos);
 	}
 
 	@GetMapping("/todos/{id}")
-	public ResponseEntity<Todo> getTodoById(@PathVariable int id)
+	public ResponseEntity<Student> getTodoById(@PathVariable int id)
 	{
-		Todo todo = todoServiceImpl.getById(id);
-		if (todo != null)
-		{
-			return ResponseEntity.ok(todo);
-		} else
-		{
-			return ResponseEntity.notFound().build();
-		}
+		Student todo = todoServiceImpl.getById(id);
+		Optional.ofNullable(todo).orElseThrow(() -> new RuntimeException("Data not found for id:" + id));
+		return ResponseEntity.ok(todo);
 	}
 
 	@PostMapping("/todos")
-	public ResponseEntity<Todo> createTodo(@RequestBody Todo todo)
+	public ResponseEntity<Student> createTodo(@RequestBody Todo todo)
 	{
-		Todo createdTodo = todoServiceImpl.createTodo(todo);
+		Student createdTodo = todoServiceImpl.createTodo(todo);
+		Optional.ofNullable(createdTodo).orElseThrow(() -> new RuntimeException("Data not created !"));
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdTodo);
 	}
 
 	@PutMapping("/todos/{id}")
-	public ResponseEntity<Todo> updateTodo(@PathVariable int id, @RequestBody String name)
+	public ResponseEntity<Student> updateTodo(@PathVariable int id, @RequestBody String name)
 	{
-		Todo updatedTodo = todoServiceImpl.updateTodo(id, name);
-		if (updatedTodo != null)
-		{
-			return ResponseEntity.ok(updatedTodo);
-		} else
-		{
-			return ResponseEntity.notFound().build();
-		}
+		Student updatedTodo = todoServiceImpl.updateTodo(id, name);
+		Optional.ofNullable(updatedTodo).orElseThrow(() -> new RuntimeException("Data not updated !"));
+		return ResponseEntity.ok(updatedTodo);
 	}
 
 	@DeleteMapping("/todos/{id}")
-	public ResponseEntity<Void> deleteTodo(@PathVariable int id)
+	public ResponseEntity<Boolean> deleteTodo(@PathVariable int id)
 	{
 		// 實作根據ID刪除代辦事項的邏輯
-		boolean deleted = todoServiceImpl.deleteTodo(id);
-		if (deleted)
-		{
-			return ResponseEntity.noContent().build();
-		} else
-		{
-			return ResponseEntity.notFound().build();
-		}
+		boolean deletedTodo = todoServiceImpl.deleteTodo(id);
+		Optional.ofNullable(deletedTodo).orElseThrow(() -> new RuntimeException("Data not deleted !"));
+		return ResponseEntity.ok(true);
+
 	}
 
 }

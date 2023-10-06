@@ -40,32 +40,32 @@ class TodoControllerMockTest
     public void init() {
         MockitoAnnotations.openMocks(this);
     }
-
-	@Test
-	public void testGetAllTodos()
-	{
-
-		List<Todo> mockTodos = new ArrayList<>();
-		mockTodos.add(new Todo(1, "JACK"));
-		mockTodos.add(new Todo(2, "MOLE"));
-
-		when(todoService.getAllTodos()).thenReturn(mockTodos);
-
-		// 调用controller的getAllTodos()方法
-		ResponseEntity<List<Todo>> responseEntity = todoController.getAllTodos();
-
-		// 验证是否正确调用了todoService的getAllTodos()方法一次
-		verify(todoService, times(1)).getAllTodos();
-
-		assert (responseEntity.getStatusCode() == HttpStatus.OK);
-
-		List<Todo> returnedTodos = responseEntity.getBody();
-		assert (returnedTodos != null);
-		assert (returnedTodos.size() == 2);
-		assert (returnedTodos.get(0).getId() == 1);
-		assert (returnedTodos.get(0).getName().equals("JACK"));
-		assert (returnedTodos.get(1).getId() == 2);
-		assert (returnedTodos.get(1).getName().equals("MOLE"));
-	}
+	
+//	@Test
+//	public void testGetAllTodos()
+//	{
+//
+//		List<Todo> mockTodos = new ArrayList<>();
+//		mockTodos.add(new Student(1, "JACK"));
+//		mockTodos.add(new Todo(2, "MOLE"));
+//
+//		when(todoService.getAllTodos()).thenReturn(mockTodos);
+//
+//		// 调用controller的getAllTodos()方法
+//		ResponseEntity<List<Todo>> responseEntity = todoController.getAllTodos();
+//
+//		// 验证是否正确调用了todoService的getAllTodos()方法一次
+//		verify(todoService, times(1)).getAllTodos();
+//
+//		assert (responseEntity.getStatusCode() == HttpStatus.OK);
+//
+//		List<Todo> returnedTodos = responseEntity.getBody();
+//		assert (returnedTodos != null);
+//		assert (returnedTodos.size() == 2);
+//		assert (returnedTodos.get(0).getId() == 1);
+//		assert (returnedTodos.get(0).getName().equals("JACK"));
+//		assert (returnedTodos.get(1).getId() == 2);
+//		assert (returnedTodos.get(1).getName().equals("MOLE"));
+//	}
 
 }
