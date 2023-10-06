@@ -12,7 +12,8 @@ import com.example.demo.models.Todo;
 @Service
 public class TodoServiceImpl implements TodoService
 {
-	@Autowired
+	//(required = false) => WTF
+	@Autowired(required = false) 
 	private StudentRepository studentRepository;
 
 	@Override
