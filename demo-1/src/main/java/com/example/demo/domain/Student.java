@@ -15,7 +15,6 @@ import lombok.Data;
 public class Student
 {
 	@Id
-	@Column(name = "studentId")
 	private int studentId;
 
 	@Column(name = "name")

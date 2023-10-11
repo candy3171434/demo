@@ -36,10 +36,9 @@ class TodoControllerMockTest
 	private TodoServiceImpl todoService;
 	@InjectMocks
 	private TodoController todoController;
-	@BeforeEach
-    public void init() {
-        MockitoAnnotations.openMocks(this);
-    }
+	/*
+	 * @BeforeEach public void init() { MockitoAnnotations.openMocks(this); }
+	 */
 	
 //	@Test
 //	public void testGetAllTodos()
