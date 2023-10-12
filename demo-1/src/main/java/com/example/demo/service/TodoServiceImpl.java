@@ -13,7 +13,6 @@ import com.example.demo.models.Todo;
 @Service
 public class TodoServiceImpl implements TodoService
 {
-	//(required = false) => WTF
 	@Autowired
 	private StudentRepository studentRepository;
 
