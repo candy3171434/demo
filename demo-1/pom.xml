@@ -106,6 +106,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>demo-docker</finalName>
 	</build>
 	<repositories>
 		<repository>
