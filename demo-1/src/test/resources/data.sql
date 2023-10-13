@@ -1,4 +1,4 @@
-INSERT INTO todo (id, name) VALUES
+INSERT INTO Student (STUDENT_ID, NAME) VALUES
     (1, 'Complete project report'),
     (2, 'Buy groceries'),
     (3, 'Repair vehicle'),
