@@ -27,7 +27,7 @@ jobs:
         image: candy3171434/demo-docker
         tags: latest
         registry: docker.io
-        dockerfile: Dockerfile
+        dockerfile: demo-1/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
       
